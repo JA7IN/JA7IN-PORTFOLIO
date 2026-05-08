@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Unbounded:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    --bg-deep: #000000;
+    --bg-soft: #000000;
+    --silver-1: #e7ebf2;
+    --silver-2: #b8c0cc;
+    --silver-3: #6c7484;
+    --steel: #2a3140;
+    --ink: #0d0f15;
+
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-bg-strong: rgba(255, 255, 255, 0.06);
+    --glass-border-strong: rgba(255, 255, 255, 0.14);
+
+    --font-display: "Rillosta", "Bodoni Moda", "Playfair Display", serif;
+    --font-section: "Quera DEMO", "Unbounded", "Bodoni Moda", serif;
+    --font-body:
+        "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-deep);
+    color: var(--silver-1);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    cursor: none;
+}
+
+::selection {
+    background: rgba(231, 235, 242, 0.18);
+    color: #fff;
+}
+
+/* Custom cursor-like accent for primary text on hover-able words */
+a,
+button,
+[role="button"],
+input,
+textarea,
+select {
+    cursor: none !important;
+}
+
+
+
+
+
+
+/* ------- Black & White animated background ------- */
+.bw-animated-bg {
+    position: relative;
+}
+.bw-animated-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+        125deg,
+        #000000 0%,
+        #111111 20%,
+        #000000 35%,
+        #ffffff 50%,
+        #000000 65%,
+        #111111 80%,
+        #000000 100%
+    );
+    background-size: 400% 400%;
+    animation: bwSweep 10s ease-in-out infinite;
+    opacity: 0.2;
+    pointer-events: none;
+}
+@keyframes bwSweep {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero name gradient — matching user's custom gray/dark gradient */
+.name-gradient {
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #9c9c9c 40%,
+        #454545 75%,
+        #1a1a1a 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* ------- Glass morphism utilities ------- */
+.glass {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0) 65%, rgba(255, 255, 255, 0.06) 100%),
+        var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.15) inset,
+        1px 0 0 rgba(255, 255, 255, 0.05) inset,
+        0 20px 60px -20px rgba(0, 0, 0, 0.6);
+}
+.glass-strong {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.08) 100%),
+        var(--glass-bg-strong);
+    border: 1px solid var(--glass-border-strong);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        1px 0 0 rgba(255, 255, 255, 0.08) inset,
+        0 30px 80px -25px rgba(0, 0, 0, 0.7);
+}
+.glass-pill {
+    background: 
+        linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.06) 100%),
+        rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* ------- Typography ------- */
+.font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 600;
+}
+.font-section {
+    font-family: var(--font-section);
+    letter-spacing: 0.02em;
+    font-weight: 500;
+}
+.font-body {
+    font-family: var(--font-body);
+}
+
+
+
+/* ------- Section divider glow ------- */
+.section-glow::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+}
+
+/* ------- Marquee for tech stack ------- */
+.marquee-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+}
+.marquee-track.reverse {
+    animation-direction: reverse;
+}
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ------- Subtle elevation on hover for glass cards ------- */
+.lift {
+    transition:
+        transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.4s ease,
+        background-color 0.4s ease,
+        box-shadow 0.5s ease;
+}
+.lift:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.1) inset,
+        0 30px 60px -20px rgba(0, 0, 0, 0.7),
+        0 0 60px -20px rgba(120, 150, 200, 0.35);
+}
+
+/* ------- Hero ornamental tagline pill ------- */
+.tag-pill {
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(10, 10, 16, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+}
+
+/* ------- Oval CTA button (Hero) ------- */
+.oval-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    transition:
+        transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background-color 0.4s ease,
+        border-color 0.4s ease,
+        color 0.3s ease,
+        box-shadow 0.5s ease;
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.08) inset,
+        0 14px 40px -16px rgba(0, 0, 0, 0.7);
+}
+.oval-btn:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.32);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.12) inset,
+        0 24px 60px -18px rgba(0, 0, 0, 0.8),
+        0 0 40px -10px rgba(80, 140, 240, 0.45);
+}
+.oval-btn:active {
+    transform: translateY(0);
+}
+
+/* ------- Custom scrollbar ------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ------- Reveal helpers (Framer Motion does most of this; CSS fallback) ------- */
+.reveal-line {
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* ------- Animated underline for links ------- */
+.link-underline {
+    position: relative;
+    transition: color 0.3s ease;
+}
+.link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}

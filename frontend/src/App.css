@@ -1,0 +1,4 @@
+.App {
+    background: var(--bg-deep);
+    min-height: 100vh;
+}
